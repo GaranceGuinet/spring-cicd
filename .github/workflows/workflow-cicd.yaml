@@ -38,5 +38,14 @@ jobs:
           name: jacoco-report
           path: target/site/jacoco
 
+      - name: Générer le site Maven
+        run: mvn site
+
+      - name: Publier le rapport Checkstyle
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-checkstyle
+          path: target/site/
+
       - name: Analyser avec CodeQL
         uses: github/codeql-action/analyze@v4
